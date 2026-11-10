@@ -1,0 +1,191 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #f3f4f6;
+  --color-card: #ffffff;
+  --color-card-foreground: #1d2846;
+
+  --color-primary: #1d2846;
+  --color-on-primary: #ffffff;
+  --color-secondary: #e6e8ed;
+  --color-on-secondary: #1d2846;
+
+  --color-accent: #1d2846;
+  --color-on-accent: #ffffff;
+
+  --color-foreground: #1d2846;
+  --color-muted: rgb(148 148 146 / 16%);
+  --color-muted-foreground: #505563;
+  --color-border: rgb(148 148 146 / 42%);
+  --color-ring: #1d2846;
+
+  --color-destructive: #dc2626;
+
+  /* Remap existing indigo utilities to the approved navy/neutral palette. */
+  --color-indigo-50: #f3f4f6;
+  --color-indigo-100: #e6e8ed;
+  --color-indigo-200: #949492;
+  --color-indigo-300: #737985;
+  --color-indigo-400: #4a5671;
+  --color-indigo-500: #1d2846;
+  --color-indigo-600: #1d2846;
+  --color-indigo-700: #17213b;
+  --color-indigo-800: #11192f;
+  --color-indigo-900: #0b1327;
+  --color-indigo-950: #070d1c;
+
+  /* Display: Space Grotesk (Think Decision), body: Inter */
+  --font-serif: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: #1d2846;
+  color: #ffffff;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+/* Angka (rupiah, stok, sku, qty) rapat kolom dalam satu keluarga font */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Float pelan untuk mock cover di hero (transform only, hormati reduced motion) */
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+.anim-float {
+  animation: float-soft 7s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .anim-float {
+    animation: none;
+  }
+}
+
+/* --- Banner gradasi mengalir atas: hiasan dekoratif (R-19: delight, marketing/rare) --- */
+/* Blur dibake di layer statis; yang bergerak hanya transform, loop pelan berbalik arah. */
+@keyframes drift-a {
+  0% {
+    transform: translate3d(-4%, -3%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(5%, 4%, 0) scale(1.1);
+  }
+}
+@keyframes drift-b {
+  0% {
+    transform: translate3d(6%, 3%, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(-5%, -4%, 0) scale(0.96);
+  }
+}
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  will-change: transform;
+  pointer-events: none;
+}
+.blob.is-slow {
+  animation: drift-a 26s ease-in-out infinite alternate;
+}
+.blob.is-fast {
+  animation: drift-b 34s ease-in-out infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blob.is-slow,
+  .blob.is-fast,
+  .blob {
+    animation: none;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1), transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.ink-line {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+}
+.reveal.is-visible .ink-line {
+  transform: scaleX(1);
+}
+
+.drawer-panel {
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.drawer-open .drawer-panel {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .drawer-panel {
+    transition: none;
+  }
+}
+
+/* Fokus keyboard yang jelas di area admin; input sudah punya ring sendiri. */
+.admin-shell :is(button, a, summary):focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+/* Autofill tetap memakai permukaan kartu, bukan biru bawaan browser. */
+.admin-shell input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-card) inset;
+  -webkit-text-fill-color: var(--color-foreground);
+}
+
+/* Glass/backdrop-blur jatuh ke permukaan solid saat transparansi dikurangi atau kontras dinaikkan. */
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .backdrop-blur-sm,
+  .backdrop-blur-md,
+  .backdrop-blur-lg,
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl {
+    backdrop-filter: none;
+  }
+}
