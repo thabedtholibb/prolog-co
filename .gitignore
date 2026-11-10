@@ -7,3 +7,10 @@ test-results
 .taste-skill
 supabase/.temp
 gcm-diagnose.log
+*.md
+.agents
+.opencode
+docs
+contoh
+coverbook
+logo
