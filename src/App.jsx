@@ -254,10 +254,10 @@ function Home({ state }) {
         )}
       </main>
       <footer className="mx-auto max-w-6xl px-4 pb-8 sm:px-6">
-        <div className="relative overflow-hidden rounded-2xl bg-indigo-950 px-5 py-6 text-white sm:px-7">
+        <div className="relative overflow-hidden rounded-[2rem] bg-indigo-950 px-6 py-10 text-white sm:px-10 sm:py-12">
           <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-col items-start gap-3">
-              <Brand dark mark logoClass="h-11" />
+              <Brand dark mark logoClass="h-24" />
               <p className="font-serif text-xl font-semibold leading-tight tracking-[-0.02em] sm:text-2xl">
                 Setiap pembaca adalah seorang penulis ceritanya.
               </p>
