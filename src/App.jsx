@@ -254,35 +254,15 @@ function Home({ state }) {
         )}
       </main>
       <footer className="mx-auto max-w-6xl px-4 pb-8 sm:px-6">
-        <div className="relative overflow-hidden rounded-[2rem] bg-indigo-950 px-6 py-10 text-white sm:px-10 sm:py-12">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-indigo-500/30 blur-3xl"
-          />
-          <div className="relative flex flex-col gap-5">
+        <div className="relative overflow-hidden rounded-2xl bg-indigo-950 px-5 py-6 text-white sm:px-7">
+          <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <Brand dark logoClass="h-9" />
-            <p className="max-w-2xl border-t border-white/10 pt-6 font-serif text-2xl font-semibold leading-[1.15] tracking-[-0.02em] sm:text-3xl">
-              Setiap pembaca adalah seorang penulis ceritanya.
-            </p>
-            <div className="flex flex-col items-start gap-2">
-              <a href="/lacak" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">
-                Lacak pesanan
-              </a>
-              <a href="/faq" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">
-                FAQ
-              </a>
-              <a href="/kontak" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">
-                Kontak
-              </a>
-              <a href="/privasi" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">
-                Privasi
-              </a>
-              <a href="/syarat" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">
-                Syarat penggunaan
-              </a>
-              <p className="text-[12px] text-white/60">
-                Dibuat untuk pembaca, bukan untuk infinite scroll. · 2026
-              </p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:justify-end">
+              <a href="/lacak" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">Lacak pesanan</a>
+              <a href="/faq" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">FAQ</a>
+              <a href="/kontak" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">Kontak</a>
+              <a href="/privasi" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">Privasi</a>
+              <a href="/syarat" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">Syarat penggunaan</a>
             </div>
           </div>
         </div>
