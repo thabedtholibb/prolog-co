@@ -254,7 +254,7 @@ function Home({ state }) {
         )}
       </main>
       <footer className="mx-auto max-w-6xl px-4 pb-8 sm:px-6">
-        <div className="relative overflow-hidden rounded-[2rem] bg-indigo-950 px-6 py-10 text-white sm:px-10 sm:py-12">
+        <div className="relative overflow-hidden rounded-[2rem] bg-[linear-gradient(135deg,#17213A_0%,#273554_100%)] px-6 py-10 text-white sm:px-10 sm:py-12">
           <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-col items-start gap-3">
               <Brand dark mark logoClass="h-24" />
