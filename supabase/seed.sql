@@ -12,7 +12,7 @@ VALUES
     ('keychain-reading-kit', 'Prolog Keychain Reading Kit', 'Aksesori membaca kustom modular. Segera hadir.', 'keychain')
 ON CONFLICT (slug) DO NOTHING;
 
--- 4 SKU Phase 1: matriks Konten (Journaling/Pure) x Edisi (Monthly/Regular)
+-- 2 SKU Phase 1: Monthly selalu Journaling, Reguler selalu Murni Puzzle.
 INSERT INTO public.product_variants (
     product_id, sku, name, content_axis, edition_axis, price, stock, weight_grams
 )
@@ -20,10 +20,8 @@ SELECT
     p.id, v.sku::text, v.name, v.content_axis, v.edition_axis, v.price, v.stock, v.weight_grams
 FROM public.products p
     JOIN (VALUES
-        ('journaling', 'monthly', 'SDK-JRN-MTH', 'Prolog Sudoku Journaling - Monthly Edition',  69000.00, 200, 300),
-        ('journaling', 'regular', 'SDK-JRN-REG', 'Prolog Sudoku Journaling - Regular Edition', 149000.00, 200, 850),
-        ('pure',       'monthly', 'SDK-PUR-MTH', 'Prolog Sudoku Classic - Monthly Edition',   49000.00, 200, 300),
-        ('pure',       'regular', 'SDK-PUR-REG', 'Prolog Sudoku Classic - Regular Edition',  119000.00, 200, 850)
+        ('journaling', 'monthly', 'SDK-JRN-MTH', 'Prolog Sudoku Journaling - Monthly Edition', 69000.00, 200, 300),
+        ('pure',       'regular', 'SDK-PUR-REG', 'Prolog Sudoku Classic - Regular Edition', 119000.00, 200, 850)
     ) AS v(content_axis, edition_axis, sku, name, price, stock, weight_grams)
 ON TRUE
 WHERE p.slug = 'sudoku'

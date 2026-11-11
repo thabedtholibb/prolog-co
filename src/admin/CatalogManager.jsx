@@ -269,8 +269,7 @@ function AddVariant({ products, onDone, notify }) {
     product_id: products[0]?.id ?? '',
     sku: '',
     name: '',
-    content_axis: 'journaling',
-    edition_axis: 'monthly',
+      edition_axis: 'monthly',
     price: '',
     stock: '',
   })
@@ -291,7 +290,7 @@ function AddVariant({ products, onDone, notify }) {
       product_id: form.product_id,
       sku: form.sku.trim().toUpperCase(),
       name: form.name.trim(),
-      content_axis: needsAxes ? form.content_axis : null,
+      content_axis: needsAxes ? (form.edition_axis === 'monthly' ? 'journaling' : 'pure') : null,
       edition_axis: needsAxes ? form.edition_axis : null,
       price: Number(form.price) || 0,
       stock: Number(form.stock) || 0,
@@ -348,16 +347,6 @@ function AddVariant({ products, onDone, notify }) {
         </Field>
         {needsAxes && (
           <>
-            <Field label="Konten">
-              <select
-                value={form.content_axis}
-                onChange={(e) => set('content_axis', e.target.value)}
-                className={`${inputCls} cursor-pointer`}
-              >
-                <option value="journaling">journaling</option>
-                <option value="pure">pure</option>
-              </select>
-            </Field>
             <Field label="Edisi">
               <select
                 value={form.edition_axis}
@@ -368,6 +357,9 @@ function AddVariant({ products, onDone, notify }) {
                 <option value="regular">regular</option>
               </select>
             </Field>
+            <p className="self-end text-[11px] leading-relaxed text-muted-foreground">
+              Monthly otomatis Journaling. Reguler otomatis Murni Puzzle.
+            </p>
           </>
         )}
         <Field label="Harga (Rp)">
@@ -421,6 +413,7 @@ function VariantRow({ variant, productName, onSave }) {
         <p className="tabular text-[12px] font-semibold">{variant.sku}</p>
         <p className="truncate text-[11px] text-muted-foreground">
           {productName} · {variant.name}
+          {variant.edition_axis && ` · ${variant.edition_axis === 'monthly' ? 'Monthly · Journaling' : 'Reguler · Murni Puzzle'}`}
         </p>
       </div>
 

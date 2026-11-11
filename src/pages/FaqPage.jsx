@@ -4,9 +4,9 @@ const GROUPS = [
   {
     title: 'Produk',
     items: [
-      ['Apa perbedaan Monthly dan Reguler?', 'Monthly berisi 31 Sudoku untuk satu bulan tertentu. Reguler berisi 50, 75, atau 100 Sudoku dan tidak terikat bulan. Keduanya bukan langganan.'],
+      ['Apa perbedaan Monthly dan Reguler?', 'Monthly adalah edisi journaling berisi 31 Sudoku untuk satu bulan tertentu. Reguler adalah edisi murni puzzle berisi 50, 75, atau 100 Sudoku dan tidak terikat bulan. Keduanya bukan langganan.'],
       ['Apakah saya bisa memilih tingkat kesulitan?', 'Bisa. Pilih Easy, Medium, atau Hard saat menambahkan produk ke keranjang.'],
-      ['Apa itu journaling?', 'Edisi journaling menambahkan ruang untuk menulis di samping Sudoku. Edisi pure berfokus pada Sudoku.'],
+      ['Apa itu journaling?', 'Journaling adalah konten Monthly yang menambahkan ruang untuk menulis di samping Sudoku. Reguler berfokus pada Sudoku murni.'],
     ],
   },
   {

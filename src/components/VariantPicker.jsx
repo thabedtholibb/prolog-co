@@ -4,21 +4,16 @@ import { supabase } from '../lib/supabase.js'
 import { rp } from '../lib/format.js'
 import { nextMonths } from '../lib/months.js'
 
-const CONTENT_LABELS = {
-  journaling: 'Dengan Journaling',
-  pure: 'Murni Puzzle',
-}
 const EDITION_LABELS = {
-  monthly: { name: 'Monthly', note: 'porsi 1 bulan' },
-  regular: { name: 'Reguler', note: 'buku tebal, sekali beli' },
+  monthly: { name: 'Monthly', note: 'journaling, 31 sudoku' },
+  regular: { name: 'Reguler', note: 'murni puzzle, pilih jumlah' },
 }
 const LEVELS = ['easy', 'medium', 'hard']
 const LEVEL_LABELS = { easy: 'Easy', medium: 'Medium', hard: 'Hard' }
 const SIZES = ['50', '75', '100']
 
 /**
- * Toggle sumbu: Edisi x Konten (peta ke SKU) + Ukuran (reguler: 50/75/100),
- * Level, dan Bulan tersimpan di options order.
+ * Pilih edisi yang menentukan konten, ukuran reguler, level, dan bulan monthly.
  */
 export default function VariantPicker({ variants, onSelected, onPreview }) {
   const add = useCartStore((s) => s.add)
@@ -92,13 +87,13 @@ export default function VariantPicker({ variants, onSelected, onPreview }) {
           {infoOpen && (
             <div className="absolute left-0 top-full z-20 mt-2 w-72 rounded-xl border border-border bg-card p-4 shadow-xl shadow-indigo-950/10">
               <p className="text-[12px] leading-relaxed text-foreground">
-                Semua edisi Sudoku terdapat 4×4 dan 9×9. Jika ingin lebih seru, tambahkan dengan journaling.
+                 Semua edisi Sudoku terdapat 4×4 dan 9×9.
               </p>
               <p className="mt-2 text-[12px] leading-relaxed text-foreground">
-                <span className="font-semibold">Monthly:</span> 31 sudoku
+                 <span className="font-semibold">Monthly:</span> journaling, 31 sudoku
               </p>
               <p className="mt-1 text-[12px] leading-relaxed text-foreground">
-                <span className="font-semibold">Reguler:</span> pilih 50, 75, atau 100 sudoku
+                 <span className="font-semibold">Reguler:</span> murni puzzle, pilih 50, 75, atau 100 sudoku
               </p>
             </div>
           )}
@@ -113,8 +108,7 @@ export default function VariantPicker({ variants, onSelected, onPreview }) {
                 aria-pressed={selected.edition_axis === v.edition_axis}
                 onClick={() =>
                   setSelectedId(
-                    variants.find((x) => x.edition_axis === v.edition_axis && x.content_axis === selected.content_axis)?.id ??
-                      variants.find((x) => x.edition_axis === v.edition_axis)?.id,
+                    variants.find((x) => x.edition_axis === v.edition_axis)?.id,
                   )
                 }
                 className={`cursor-pointer rounded-xl border-2 px-4 py-2.5 text-left text-[13.5px] transition-[border-color,background-color,transform] active:scale-[0.98] ${
@@ -154,34 +148,6 @@ export default function VariantPicker({ variants, onSelected, onPreview }) {
           </div>
         </fieldset>
       )}
-
-      <fieldset className="mt-4">
-        <legend className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Konten</legend>
-        <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
-          {variants
-            .filter((v, i, arr) => arr.findIndex((x) => x.content_axis === v.content_axis) === i)
-            .map((v) => (
-              <button
-                key={v.content_axis}
-                type="button"
-                aria-pressed={selected.content_axis === v.content_axis}
-                onClick={() =>
-                  setSelectedId(
-                    variants.find((x) => x.content_axis === v.content_axis && x.edition_axis === selected.edition_axis)?.id ??
-                      variants.find((x) => x.content_axis === v.content_axis)?.id,
-                  )
-                }
-                className={`cursor-pointer rounded-xl border-2 px-4 py-3 text-left text-[13.5px] font-medium transition-[border-color,background-color,transform] active:scale-[0.98] ${
-                  selected.content_axis === v.content_axis
-                    ? 'border-primary bg-indigo-50 text-primary'
-                    : 'border-border bg-card text-foreground hover:border-indigo-200'
-                }`}
-              >
-                {CONTENT_LABELS[v.content_axis]}
-              </button>
-            ))}
-        </div>
-      </fieldset>
 
       <fieldset className="mt-4">
         <legend className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Level</legend>

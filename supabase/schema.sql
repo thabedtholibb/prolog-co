@@ -319,6 +319,12 @@ BEGIN
             RAISE EXCEPTION 'Produk untuk varian % sudah tidak aktif.', v_variant.sku USING ERRCODE = '22023';
         END IF;
 
+        IF v_category = 'sudoku'
+           AND ((v_variant.edition_axis = 'monthly' AND v_variant.content_axis IS DISTINCT FROM 'journaling')
+             OR (v_variant.edition_axis = 'regular' AND v_variant.content_axis IS DISTINCT FROM 'pure')) THEN
+            RAISE EXCEPTION 'Monthly harus Journaling dan Reguler harus Murni Puzzle.' USING ERRCODE = '22023';
+        END IF;
+
         v_options := COALESCE(v_item->'options', '{}'::jsonb);
         IF jsonb_typeof(v_options) <> 'object' THEN
             RAISE EXCEPTION 'Opsi varian tidak valid.' USING ERRCODE = '22023';
@@ -503,6 +509,29 @@ BEGIN
     );
 END;
 $$;
+
+CREATE OR REPLACE FUNCTION public.validate_sudoku_variant_axes()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = public
+AS $$
+DECLARE
+    v_category TEXT;
+BEGIN
+    SELECT category INTO v_category FROM public.products WHERE id = NEW.product_id;
+    IF v_category = 'sudoku'
+       AND ((NEW.edition_axis = 'monthly' AND NEW.content_axis IS DISTINCT FROM 'journaling')
+         OR (NEW.edition_axis = 'regular' AND NEW.content_axis IS DISTINCT FROM 'pure')) THEN
+        RAISE EXCEPTION 'Monthly harus Journaling dan Reguler harus Murni Puzzle.' USING ERRCODE = '22023';
+    END IF;
+    RETURN NEW;
+END;
+$$;
+
+DROP TRIGGER IF EXISTS validate_sudoku_variant_axes ON public.product_variants;
+CREATE TRIGGER validate_sudoku_variant_axes
+    BEFORE INSERT OR UPDATE OF product_id, content_axis, edition_axis ON public.product_variants
+    FOR EACH ROW EXECUTE FUNCTION public.validate_sudoku_variant_axes();
 
 /* Lookup pesanan untuk guest: nomor pesanan + email, keduanya harus cocok. */
 CREATE OR REPLACE FUNCTION public.get_order(p_order_number TEXT, p_email TEXT)
