@@ -258,11 +258,11 @@ function Home({ state }) {
           <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-col items-start gap-3">
               <Brand dark mark logoClass="h-24" />
-              <p className="font-serif text-xl font-semibold leading-tight tracking-[-0.02em] sm:text-2xl">
+              <p className="border-t border-white/15 pt-4 font-serif text-xl font-semibold leading-tight tracking-[-0.02em] sm:text-2xl">
                 Setiap pembaca adalah seorang penulis ceritanya.
               </p>
             </div>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:justify-end">
+            <div className="flex flex-col items-start gap-2 sm:items-end">
               <a href="/lacak" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">Lacak pesanan</a>
               <a href="/faq" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">FAQ</a>
               <a href="/kontak" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">Kontak</a>
