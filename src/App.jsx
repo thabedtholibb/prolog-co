@@ -259,12 +259,12 @@ function Home({ state }) {
             aria-hidden="true"
             className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-indigo-500/30 blur-3xl"
           />
-          <p className="relative max-w-2xl font-serif text-2xl font-semibold leading-[1.15] tracking-[-0.02em] sm:text-3xl">
-            Setiap pembaca adalah penulis ceritanya sendiri.
-          </p>
-          <div className="relative mt-8 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="relative flex flex-col gap-5">
             <Brand dark logoClass="h-9" />
-            <div className="flex flex-col items-start gap-2 sm:items-end">
+            <p className="max-w-2xl border-t border-white/10 pt-6 font-serif text-2xl font-semibold leading-[1.15] tracking-[-0.02em] sm:text-3xl">
+              Setiap pembaca adalah seorang penulis ceritanya.
+            </p>
+            <div className="flex flex-col items-start gap-2">
               <a href="/lacak" className="text-[13px] font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline">
                 Lacak pesanan
               </a>

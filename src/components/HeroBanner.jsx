@@ -61,8 +61,8 @@ export default function HeroBanner() {
             untuk diri sendiri, sebelum scroll memakan waktumu.
           </h1>
           <p className="mt-6 max-w-lg text-[16px] leading-[1.7] text-muted-foreground sm:text-[17px]">
-            Kami membuat benda untuk menemani jedamu dari layar. Buku untuk jeda, sarung untuk menjaga bukumu,
-            gantungan untuk mendampingi. Satu jeda kecil yang nyata.
+             Kami menghadirkan teman untuk menemani jedamu dari layar. Buku untuk teman jeda, sleeve untuk menjaga,
+             aksesoris untuk pelengkapnya. Satu jeda kecil yang nyata.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a

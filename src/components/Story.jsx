@@ -31,18 +31,18 @@ export function Reveal({ as: Tag = 'div', delay = 0, className = '', children, .
 const BEATS = [
   {
     kicker: 'Bab Pertama',
-    title: 'Sore yang lupa habisnya',
-    body: 'Kita semua tahu rasanya: layar menyala lebih lama dari yang kita inginkan. Scroll terasa seperti napas, tetapi tidak pernah tenang. Penat itu halus, dan hampir tidak terasa datang.',
+    title: 'Sore yang terbuang tanpa sadar',
+    body: 'Kita semua tahu rasanya detik, menit, dan setiap waktu yang hilang tanpa arti dan kesadaran. Scroll terasa seperti napas, tetapi kepala rasanya tidak pernah puas.',
   },
   {
     kicker: 'Bab Kedua',
-    title: 'Satu pertanyaan sederhana',
-    body: 'Prolog.co bermula saat kami bertanya: kalau layar tidak pernah memelihara jeda, mungkin benda nyata bisa memeliharanya. Benda nyata meminta sedikit saja. Ia dibuka, dipegang, dikerjakan pelan-pelan, lalu menuntun kita pulang ke diri sendiri.',
+    title: 'Resahnya di tengah malam',
+    body: 'Muncullah sebuah pertanyaan: kalau layar tidak pernah memberi jeda, hidup mau dibawa ke mana? Mungkin ini waktunya kita butuh teman untuk memutus siklus dopamine instan.',
   },
   {
     kicker: 'Bab Ketiga',
-    title: 'Prolog, teman awal cerita',
-    body: 'Prolog berarti satu hal: semua cerita butuh awal yang jujur. Prolog.co hadir sebagai teman awal cerita. Sebelum halaman pertama dibuka, sebelum bab demi bab bergulir. Versinya bisa disesuaikan dengan ritmemu, pengingat sederhana bahwa ceritamu selalu bisa dimulai lagi.',
+    title: 'Prolog hadir sebagai teman awal cerita',
+    body: 'Prolog berarti satu hal: semua cerita butuh awal yang jujur. Sebelum halaman pertama dibuka, sebelum bab demi bab bergulir. Sebelum waktu terasa habis berlalu, Prolog menemani dan mengingatkan bahwa ceritamu akan lebih baik hari demi hari.',
   },
 ]
 
@@ -61,8 +61,7 @@ export default function Story() {
               Semua cerita butuh awal yang jujur.
             </h2>
             <p className="mt-4 max-w-[34ch] text-[15px] leading-[1.7] text-muted-foreground">
-              Tiga bab kecil tentang layar, jeda, dan kebiasaan pulang. Bukan manifesto, hanya alasan kami
-              membuat benda-benda ini.
+              Tiga bab kecil tentang layar, jeda, dan kebiasaan pulang.
             </p>
             <a
               href="#katalog"
